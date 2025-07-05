@@ -1,9 +1,13 @@
 import axios from "axios";
 
+// Create axios instance with base URL from environment variables
+// If you want to change the API base URL, update VITE_REACT_API_URL in your .env file
 const instance = axios.create({
   baseURL: import.meta.env.VITE_REACT_API_URL,
 });
 
+// Request interceptor to automatically add authorization header to all requests
+// If you want to change the token, update VITE_REACT_API_TOKEN in your .env file
 instance.interceptors.request.use((config) => {
   const token = import.meta.env.VITE_REACT_API_TOKEN;
   if (token) {
@@ -12,6 +16,8 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
+// API for fetching popular movies
+// If you want to change the page number or language, modify the URL parameters here
 const movieApiPopuler = {
   getMovie: () =>
     instance({
@@ -20,6 +26,8 @@ const movieApiPopuler = {
     }),
 };
 
+// API for fetching movies by specific language and region
+// If you want to change sorting criteria or filters, modify the URL parameters here
 const movieApiRegion = {
   getMovie: (lang: string, region: string) =>
     instance({
@@ -28,6 +36,8 @@ const movieApiRegion = {
     }),
 };
 
+// API for fetching TV shows from Indonesia (ID region)
+// If you want to change the country, page number, or other filters, modify the URL parameters here
 const tvApiRegion = {
   getMovie: () =>
     instance({
@@ -36,6 +46,8 @@ const tvApiRegion = {
     }),
 };
 
+// API for fetching detailed information about a specific movie or TV show
+// If you want to change the language, modify the language parameter here
 const mediaApi = {
   getDetail: (mediaType: "movie" | "tv", id: number) =>
     instance({
