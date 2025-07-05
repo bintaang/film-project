@@ -75,7 +75,7 @@ const HeroCarousel = () => {
                     .replace(":id", movie.id.toString()),
                 )
               }
-              className="btn btn-primary btn-sm rounded-xl w-80 p-8 blue-5 border-sky-800 shadow-2xl shadow-gray-700 transition-all duration-1000 ease-in-out hover:border-sky-700 hover:shadow-sky-700 hover:blue-gradient"
+              className="btn btn-primary btn-sm rounded-xl w-1/2 p-8 blue-5 border-sky-800 shadow-2xl shadow-gray-700 transition-all duration-1000 ease-in-out hover:border-sky-700 hover:shadow-sky-700 hover:blue-gradient"
             >
               Watch Now
             </button>
