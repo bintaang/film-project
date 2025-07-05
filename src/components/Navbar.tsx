@@ -1,6 +1,8 @@
+import logo from "../assets/icon.png"; // adjust path based on Navbar.tsx location
+
 const Navbar = () => {
   return (
-    <div className="navbar blue-1 shadow-sm">
+    <div className="navbar blue-2 shadow-xs shadow-sky-900 rounded-2xl p-5 transition-all duration-500 ease-in-out hover:shadow-sky-700">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -37,26 +39,12 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost">
+          <img src={logo} className="w-20 h-20" alt="Logo" />
+        </a>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            {" "}
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />{" "}
-          </svg>
-        </button>
+        {" "}
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
             <svg

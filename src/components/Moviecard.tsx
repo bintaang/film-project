@@ -38,23 +38,29 @@ const Moviecard = () => {
             key={item.id} // Use item.id as key
             className="block" // Make the whole card clickable
           >
-            <div className="card bg-base-100 w-60 shadow-xl">
-              <figure>
-                <img
-                  src={
-                    item.poster_path
-                      ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
-                      : "https://via.placeholder.com/240x360?text=No+Image"
-                  } // Fallback image
-                  alt={item.original_title || "Movie Poster"} // Use original_title for movies
-                />
-              </figure>
-              <div className="card-body ">
-                <h2 className="card-title">{item.original_title}</h2>
-                <p className="h-20 overflow-y-hidden">{item.overview}</p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Details</button>{" "}
-                  {/* Changed from "Buy Now" */}
+            <div className="group w-60 shadow-xl transition-all duration-900 ease-in-out hover:scale-105 hover:h-auto overflow-hidden relative hover:shadow-sky-800 rounded-xl">
+              <div className="card w-full">
+                <figure className="w-full">
+                  <img
+                    src={
+                      item.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
+                        : "https://via.placeholder.com/240x360?text=No+Image"
+                    }
+                    alt={item.original_title || "Movie Poster"}
+                    className="w-full h-auto object-cover"
+                  />
+                </figure>
+
+                {/* Hidden content, revealed on hover */}
+                <div className="card-body opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[300px] transition-all duration-700 ease-in-out">
+                  <h2 className="card-title">{item.original_title}</h2>
+                  <p className="text-sm overflow-hidden line-clamp-4">
+                    {item.overview}
+                  </p>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-primary">Details</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,7 +75,6 @@ const Moviecard = () => {
 interface MoviecardRegionProps {
   lang: string;
   region: string;
-  id: number;
 }
 const MoviecardRegion = ({ lang, region }: MoviecardRegionProps) => {
   const setMovies = storeRegion((state) => state.setMovies);
@@ -94,20 +99,29 @@ const MoviecardRegion = ({ lang, region }: MoviecardRegionProps) => {
             key={item.id} // Use item.id as key
             className="block"
           >
-            <div className="card bg-base-100 w-60 shadow-xl" key={item.id}>
-              <figure>
+            <div
+              className="group w-60 shadow-xl transition-all duration-900 ease-in-out hover:scale-105 hover:h-auto overflow-hidden relative hover:shadow-sky-800 rounded-xl"
+              key={item.id}
+            >
+              {/* Poster saja yang tampil awal */}
+              <figure className="w-full">
                 <img
                   src={
                     item.poster_path
                       ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
                       : "https://via.placeholder.com/240x360?text=No+Image"
-                  } // Fallback image
+                  }
                   alt={item.original_title || "Movie Poster"}
+                  className="w-full h-auto object-cover"
                 />
               </figure>
-              <div className="card-body ">
+
+              {/* Konten disembunyikan awal, muncul saat hover */}
+              <div className="card-body opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[300px] transition-all duration-700 ease-in-out">
                 <h2 className="card-title">{item.original_title}</h2>
-                <p className="h-20 overflow-y-hidden">{item.overview}</p>
+                <p className="text-sm overflow-hidden line-clamp-4">
+                  {item.overview}
+                </p>
                 <div className="card-actions justify-end">
                   <button className="btn btn-primary">Details</button>
                 </div>
@@ -144,24 +158,31 @@ const TvCard = () => {
             key={item.id} // Use item.id as key
             className="block"
           >
-            <div className="card bg-base-100 w-60 shadow-xl">
-              <figure>
+            <div
+              className="group w-60 shadow-xl transition-all duration-900 ease-in-out hover:scale-105 hover:h-auto overflow-hidden relative hover:shadow-sky-800 rounded-xl"
+              key={item.id}
+            >
+              {/* Poster tampil penuh saat awal */}
+              <figure className="w-full">
                 <img
                   src={
                     item.poster_path
                       ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
                       : "https://via.placeholder.com/240x360?text=No+Image"
-                  } // Fallback image
-                  alt={item.name || "TV Show Poster"} // Use item.name for TV shows
+                  }
+                  alt={item.name || "TV Show Poster"}
+                  className="w-full h-auto object-cover"
                 />
               </figure>
-              <div className="card-body ">
-                <h2 className="card-title">{item.name}</h2>{" "}
-                {/* Use item.name for TV shows */}
-                <p className="h-20 overflow-y-hidden">{item.overview}</p>
+
+              {/* Konten disembunyikan dulu, muncul saat hover */}
+              <div className="card-body opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[300px] transition-all duration-700 ease-in-out">
+                <h2 className="card-title">{item.name}</h2>
+                <p className="text-sm overflow-hidden line-clamp-4">
+                  {item.overview}
+                </p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Details</button>{" "}
-                  {/* Changed from "Buy Now" */}
+                  <button className="btn btn-primary">Details</button>
                 </div>
               </div>
             </div>
